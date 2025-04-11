@@ -1,0 +1,232 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    background-color: darkgray;
+}
+.basic {
+    width: 1600px;
+    margin-left: calc(50% - 800px);
+    margin-right: calc(50% - 800px);
+    position: relative;    
+    background-color: aliceblue;
+  }
+
+  .header {
+    position: relative;
+    width: 100%;
+    background-color: darkblue;
+    color: white;
+    padding-top: 10px;
+    height: 70px;
+    display: flex;
+    &_user {
+      margin-top: 10px;
+      text-align: center;
+    }
+  }
+  .header_title {
+    text-align: center;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    padding-bottom: 5px;
+  }
+  .header_subtitle {
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  .header_h {
+    width: 1500px;
+  }
+  .header_editor {
+    width: 300px;    
+    color: yellowgreen;
+    font-size: 12px;
+  }
+  .nav {
+    width: 100%;
+    position: relative;
+    height: 50px;
+    background-color: #15255f ;
+    color: white;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 18px;
+    &__menu{
+        display: flex;
+        position: relative;
+        height: 100%;
+        width: 150px;
+        justify-content: center;
+        align-items: center;
+        //border: 1px solid white;        
+    }    
+    &__a {
+        text-decoration: none;
+        color: white;
+    }
+    &__a:hover {
+        color: gold;
+    }
+    &__btn {
+        background-color: #15255f;
+        border: none;
+        color: white;
+        font-size: 18px;
+    }
+    &__btn:hover {
+        color: gold;
+    }
+    &__select {
+      font-size: 16px;
+    }
+  }
+
+ 
+
+  .main {
+    width: 100%; 
+    position: relative;   
+    &__img {
+      width: 100%;
+    }
+    &_double {
+      width: 100%;
+      display: flex;
+      flex-wrap: wrap;
+      position: relative;
+      background-color: #15255f;
+      height: 100%;
+    }
+  }
+  .month {
+    height: 320px;
+    width: 400px;
+    position: relative;
+    border:2px solid white;
+    box-sizing: border-box;
+
+    &__h3 {
+      text-align: center;
+      color: white;
+      margin-top: 10px;
+      margin-bottom: 20px;
+    }
+    &__li {
+      margin-top: 10px;      
+      list-style: none;
+      display: flex;
+      justify-content: center;
+    }
+
+    &__btn {
+      font-size: 20px;
+      background-color: #15255f;
+      color: lightgoldenrodyellow;
+      border: none;
+      &-short {
+        width: 20px;
+        font-size: 16px;
+      }
+    }
+    
+    &__btn:hover {
+      color: gold;
+    }
+    &__button {
+      font-size: 20px;
+      margin-top: 20px;
+      width: 200px;
+      height: 40px;
+      border: 2px solid white;
+      border-radius: 20px;
+      background-color: blueviolet;
+      color: white;
+      &_nomargin{
+        margin-top: 0;
+      }
+    }
+    &__button:hover {
+      background-color: navy;
+      color: pink;
+    }
+
+  }
+
+
+  .exit {
+    text-decoration: none;
+    text-align: center;
+    color: red; 
+    display: block;   
+  }
+  .exit:hover {
+    color: gold;
+  }
+  .warning {
+    width: 100%;
+    height: 950px;
+    display: flex;
+    background-color: grey;
+    color: red;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+  }
+
+  .pink {
+    background-color: pink;
+    color: navy;
+  }
+
+  .addist {
+    position: relative;
+    margin-top: 2%;
+    margin-left: 5%;
+    width: 90%;
+    height: 950px;
+    &__li {
+      margin-top: 30px;
+    }
+    &__half{
+      width: 100%;
+      display: flex;
+    }
+  }
+  .autorize {
+    width: 100%;
+    height: 950px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    &__ed {
+      align-items: flex-start;
+    }
+  }
+
+  .hInput {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  .table_ed {
+    margin-top: 20px;
+    width: 80%;
+    border-collapse: collapse;
+  }
+  .th_hed {
+    border: 2px solid violet;
+    padding: 3px;
+  }
+  .half{
+    width: 50%;
+    height: 70%;
+  }
+
+  .imgExc {
+    width: 75%;
+  }
+
+

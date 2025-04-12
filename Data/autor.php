@@ -60,7 +60,7 @@ switch ($action){
                 break;
             }
         }
-        //header('Location: ../index.php');
+        
         break;
     default:
         session_abort();

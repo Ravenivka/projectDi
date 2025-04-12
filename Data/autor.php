@@ -1,19 +1,12 @@
 <?php
-namespace Data;
+
 session_start(); 
 
 $css = '<link rel="stylesheet" href="'.'' .'../style.css" class="css">';
 $title = "Авторизация";
 require_once $_SERVER['DOCUMENT_ROOT'] .'/Data/weeks.php';
 $action = $_REQUEST['var'];
-$text_path = $_SERVER['DOCUMENT_ROOT'].'/Data/user.txt';
-$text = file_get_contents($text_path);
-$array = explode(PHP_EOL, $text);
-$users = array();
-for ($i = 0; $i < count($array); $i++){
-    $user = explode(',', $array[$i]);
-    $users[$i] = $user;
-}
+require_once $_SERVER['DOCUMENT_ROOT'].'/Data/users.php' ;
 switch ($action){
     case 1:
         session_abort();
@@ -39,9 +32,13 @@ switch ($action){
         ';
         require_once '../Shared/base.php';
         break;
-    case 3:
-        
-        header('Location: ../index.php');
+    case 3:        
+        $path = realpath($_SERVER['DOCUMENT_ROOT'].'/Data/user.txt');        
+        //$login = $_POST['log'];
+        //$pass = $_POST['pass'];
+        $users = new MyUsers($path);
+        var_dump($users->getRoleByName('root'));
+        //header('Location: ../index.php');
         break;
     default:
         session_abort();

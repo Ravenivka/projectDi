@@ -1,30 +1,51 @@
 <?php
-class Users{
-    public $User;
-    private array $Coll;
+ 
+    
+    
+ 
+    class MyUsers {      
+        private array $Collz;
+        public array $Coll;
+    
+        public function __construct(string $base){
+           $array = explode(PHP_EOL, file_get_contents($base));            
+            $this->Collz = $array;
+            $arr = array();
+            $i = 0;
+            foreach($array as $line){
+                $ar = explode(',', $line);
+                $arr[$i] = $ar;
+                $i++;
+            }
+            $this->Coll = $arr;
+        }
 
-    public function __construct() {
-        $path = realpath($_SERVER['DOCUMENT_ROOT'].'/Data/user.txt');
+        public function getUser(int $index) {
+            try {            
+                $array = $this->Coll;
+                return $array[$index];
+            } catch (Exception $e) {
+                return -1;
+            }
+        }
+        public function getUserByName(string $string) {
+            $array = $this->Coll;
+            foreach($array as $arr) {
+                if ($string == $arr[0]) {
+                    return $arr;
+                }
+            }
+            return null;
+        }
+        public function getRoleByName(string $string) {
+            $array = $this->Coll;
+            foreach($array as $arr) {
+                if ($string == $arr[0]) {
+                    return $arr[2];
+                }
+            }
+            return 0;
+        }
+    
     }
-
-}
-
-
-class MyUser{
-    public string $name, $passwoed;
-    public int $role;
-    public function __construct(string $string){
-        $text = explode(',', $string);
-        $this->name = $text[0];
-        $this->passwoed = $text[1];
-        $this->role = (int) $text[2];
-    }
-}
-
-
-
-
-
-
-
 ?>

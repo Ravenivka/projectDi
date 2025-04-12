@@ -23,7 +23,7 @@
                             <h2 class = "header_user"><?php echo $_SESSION['user']; ?></h2>   <br>                         
                             <a class="exit" href="Data/autor.php?var=1">Выйти</a>                            
                     <?php } else { ?>
-                        <form method="post" action="Data/autor.php">
+                        <form method="post" action="../Data/autor.php">
                          <input type = 'hidden' name = "var" value = "2">   
                         <button type="submit" class="month__button" >Вход</button>
                         </form>
@@ -31,7 +31,7 @@
                 </div> 
         </div>
         <nav class="nav">
-            <div class="nav__menu"><a href="index.php" class="nav__a">Домой</a></div>
+            <div class="nav__menu"><a href="../index.php" class="nav__a">Домой</a></div>
             <?php foreach ($pack->collection as $year) { ?>
             <div class="nav__menu">
                 <form action="year" method="post">

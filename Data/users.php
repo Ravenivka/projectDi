@@ -1,8 +1,4 @@
-<?php
- 
-    
-    
- 
+<?php 
     class MyUsers {      
         private array $Collz;
         public array $Coll;
@@ -25,7 +21,7 @@
                 $array = $this->Coll;
                 return $array[$index];
             } catch (Exception $e) {
-                return -1;
+                return 0;
             }
         }
         public function getUserByName(string $string) {
@@ -35,7 +31,7 @@
                     return $arr;
                 }
             }
-            return null;
+            return "Гость";
         }
         public function getRoleByName(string $string) {
             $array = $this->Coll;
@@ -45,6 +41,26 @@
                 }
             }
             return 0;
+        }
+
+        public function inList (string $login) {
+            foreach ($this->Coll as $array){
+                if ($array[0] == $login) {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        public function autorize (string $login, string $password) {           
+                if (!($this->inList($login))) {
+                    return false;
+                }
+                $user = $this->getUserByName($login);
+                if ($user[1] == $password) {
+                    return true;
+                }
+            return false;
         }
     
     }

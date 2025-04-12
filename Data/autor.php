@@ -1,4 +1,5 @@
 <?php
+namespace Data;
 session_start(); 
 
 $css = '<link rel="stylesheet" href="'.'' .'../style.css" class="css">';
@@ -23,6 +24,7 @@ switch ($action){
         header('Location: ../index.php' );
         break;
     case 2:
+        $title = "Авторизация";
         $value = '
             <div class="autorize">
             <div class="auto2">
@@ -38,8 +40,7 @@ switch ($action){
         require_once '../Shared/base.php';
         break;
     case 3:
-        $_SESSION['user'] = 'admin';
-        $_SESSION['role'] = 3;
+        
         header('Location: ../index.php');
         break;
     default:

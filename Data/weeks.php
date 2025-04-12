@@ -1,4 +1,5 @@
 <?php
+
 global $months;
 $months = array(
     1 => "Январь",

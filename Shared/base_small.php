@@ -1,4 +1,7 @@
 <!DOCTYPE html>
+<?php
+     require_once '../Data/weeks.php';
+?>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -50,14 +53,3 @@
             </div> <?php } ?>
         </nav>     
         <main class="main">
-                    <?php echo $value;?>
-        </main>
-        
-        </div>
-    
-        
-    </body>
-    </html>
-           
-           
-

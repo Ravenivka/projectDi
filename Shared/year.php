@@ -1,14 +1,28 @@
+<?php
+    $css = '<link rel="stylesheet" href="'.'' .'../style.css" class="css">';
+    $yearname = $_POST['year'];    
+    require_once realpath($_SERVER['DOCUMENT_ROOT'].'/Data/weeks.php' );
+    //$pack = $_POST['pack'];
+    $year = $pack->collection[$yearname];
+    $months = $year->months;
+    session_start();
+    $code = false;
+    if ( isset($_SESSION['user']) and $_SESSION['role'] > 0){
+        $code = true;
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?php echo $title ;?></title>
+    <title><?php echo $yearname ;?></title>
     <?php
         //global $pack;
         echo $css;        
     ?>    
-    </head>
+</head>
 <body>
     
     <div class="basic">
@@ -44,20 +58,49 @@
                 if (isset($_SESSION['user']) and ($_SESSION['role'] > 0)){
             ?>            
             <div class="nav__menu">
-                <form method="post" action="../Shared/add.php">
+                <form method="post" action="../Data/add.php">
                     <button type="submit" class="month__button month__button_nomargin" ><p style="text-align:center;">Добавить фото</p> </button>
                 </form>
             </div> <?php } ?>
         </nav>     
         <main class="main">
-                    <?php echo $value;?>
-        </main>
+<div class="main_double">
+<?php foreach($months as $month) { ?>
+<div class="month">
+    <h2 class = "month__h3"> <?php echo $month->name ?></h2>
+    <ul class="month__ul">
+        <?php foreach ($month->weeks as $week) { ?>            
+            <li class="month__li">
+                <form action="../Shared/link.php" method="post">
+                    <input value="<?php echo $week->path; ?>" name="week" type ="hidden"/>
+                    <button class="month__btn" type="submit"><?php echo $week->start; ?></button>                      
+                </form> <?php if ($code) { ?>
+                <form method="post">
+                    <input value = "<?php echo $week->path; ?>" name = "path" type ="hidden"/>
+                    <input value = "<?php echo $week->start; ?>" name = "start" type ="hidden"/>
+                    <button class="month__btn month__btn-short " type="submit" formaction="../Data/edit.php" >&#128221;</button>
+                    <button class="month__btn month__btn-short" type="submit" formaction="../Data/delta.php" >&#128683;</button>
+                </form>    
+                <?php } ?>
+            </li>
+        <?php } ?>
+    </ul>    
+</div>
+<?php } ?>
+</div>
+<script>
+        const Di = document.querySelector('.main_double');
+        const H = window.innerHeight;
+        let Zu = H-120;
+        if (Di.style.height < Zu){
+            let M = Zu + 'px';
+            Di.style.height = M;
+        }
+</script>
+</main>
         
         </div>
     
         
     </body>
     </html>
-           
-           
-

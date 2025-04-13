@@ -1,5 +1,6 @@
 <?php
 
+global $pack;
 global $months;
 $months = array(
     1 => "Январь",
@@ -15,7 +16,7 @@ $months = array(
     11=> "Ноябрь",
     12=> "Декабрь"
 );
-global $pack;
+
 class Week {      
     public string $start, $finish, $month, $path, $year;
     public int $month_int, $year_int;

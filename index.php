@@ -1,5 +1,4 @@
 <?php
-
     $title = "Домашняя";
     session_start();
 

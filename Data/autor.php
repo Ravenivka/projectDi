@@ -61,7 +61,7 @@ switch ($action){
             }
         }
         
-        break;
+        //break;
     default:
         session_abort();
         session_start();

@@ -18,7 +18,8 @@ switch ($action){
         break;
     case 2:
         $title = "Авторизация";
-        $value = '
+        require_once '../Shared/base_small.php';
+        echo '
             <div class="autorize">
             <div class="auto2">
                 <form action="http://'.$_SERVER['HTTP_HOST'] .'/Data/autor.php" class="hForm" method="post">
@@ -28,9 +29,9 @@ switch ($action){
                 <p style="text-align: center;"><button type="submit" class="month__button hBtn">OK</button></p>
                 </form>
             </div>
-            </div>
+            </div></main></body></html>
         ';
-        require_once '../Shared/base.php';
+
         break;
     case 3: 
         $autorize = false;       
@@ -38,25 +39,26 @@ switch ($action){
         $login = $_POST['log'];
         $pass = $_POST['pass'];
         $users = new MyUsers($path);
-        if (!$users->inList($login)) {
-            $value = '<div class="warning"><span>Пользователь не найден</span></div>';
+        if (!$users->inList($login)) {            
             $title = "Внимание";
-            require_once $_SERVER['DOCUMENT_ROOT']. '/Shared/base.php';
+            require_once $_SERVER['DOCUMENT_ROOT']. '/Shared/base_small.php';
+            echo '<div class="warning"><span>Пользователь не найден</span></div></main></body></html>';
             break;
         } else {
-            if ($users->autorize($login, $pass) == false) {
-                $value = '<div class="warning"><span>Пароль ошибочен</span></div>';
+            if ($users->autorize($login, $pass) == false) {                
                 $title = "Внимание";
-                require_once $_SERVER['DOCUMENT_ROOT']. '/Shared/base.php';
+                require_once $_SERVER['DOCUMENT_ROOT']. '/Shared/base_small.php';
+                echo '<div class="warning"><span>Пароль ошибочен</span></div></main></body></html>';
                 break;
             } else {
-                $value = '<div class="warning"><span>Авторизация пройдена</span></div>';
+                
                 $title = "Внимание";
                 session_abort();
                 session_start();
                 $_SESSION['user'] = $login;
                 $_SESSION['role'] =  $users->getRoleByName($login)     ;
-                require_once $_SERVER['DOCUMENT_ROOT']. '/Shared/base.php';
+                require_once $_SERVER['DOCUMENT_ROOT']. '/Shared/base_small.php';
+                echo '<div class="warning"><span>Авторизация пройдена</span></div></main></body></html>';
                 break;
             }
         }

@@ -6,8 +6,7 @@
         $_SESSION['user'] = 'None';
         $_SESSION['role'] = 0;
     }
-    //echo $_SESSION['user'];
-    $css = '<link rel="stylesheet" href="'.'' .'../style.css" class="css">';
+    //echo $_SESSION['user'];    
     require_once './Data/weeks.php';
 
     if (!isset($_SESSION['server'] )){
@@ -34,11 +33,9 @@
         if (($date1 <= $date3) and ($date2 >= $date3)){
             $currentpath = $key->path ;
         }
-    }
-    
-    $value = '<img src="'.$currentpath.'" alt="none" class="main__img">';
-    require_once './Shared/base.php';
-
+    }   
+    require_once './Shared/base_small.php';
+    echo '<img src="'.$currentpath.'" alt="none" class="main__img"> </main></body></html>';
 
 
 

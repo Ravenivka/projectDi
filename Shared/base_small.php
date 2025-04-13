@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <?php
-     require_once '../Data/weeks.php';
+     require_once realpath($_SERVER['DOCUMENT_ROOT']. '/Data/weeks.php');
 ?>
 <html lang="en">
 <head>
@@ -9,8 +9,10 @@
     <title><?php echo $title ;?></title>
     <?php
         //global $pack;
-        echo $css;        
-    ?>    
+        
+              
+    ?> 
+    <link rel="stylesheet" href="../style.css">   
     </head>
 <body>
     

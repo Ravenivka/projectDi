@@ -99,47 +99,25 @@ function delta(int $index, string $path) {
     return $boo;
 }
 
-function exchange(){
-    if (!isset($_SESSION['admin']) or $_SESSION['admin'] != 'root'){
-        $content = '<div class="warning"><span>ошибка авторизации 401 Unauthorized Error</span></div>';
-        $x = realpath ($_SERVER['DOCUMENT_ROOT'].'/shared/base.php');
-        $y = realpath ($_SERVER['DOCUMENT_ROOT'].'/shared/end.php');        
-        render($x, $content, $y);
-    }
-    $array = array();
-    $array[0] = $_POST['god'];
-    $tem = $_POST['phone'];
-    if (strlen($tem) == 1){
-        $array[1] = '0'.$tem;
-    } else {
-        $array[1] = $tem;
-    }
-    $index = $_POST['index'];
+function checkYear (string $date, string $photo, string $oldpath) {
+    $sDate = new DateTime($date);
+    $Y = $sDate->format('Y');
     
-    $stamp1 = new DateTime($_POST['start-date']);
-    $stamp2 = new DateTime($_POST['end-date']);
-
-    $array[2] = $stamp1->format('d.m.Y');
-    $array[3] = $stamp2->format('d.m.Y');
-
-    $array[4] = $_POST['mid4'];
-//var_dump($array);
-    
-    try{
-        $delta = delta($index, realpath($_SERVER['DOCUMENT_ROOT'].'/Data/photo.txt'));
-        $new_string = implode(',', $array);
-        $textfile = file_get_contents(realpath($_SERVER['DOCUMENT_ROOT'].'/Data/photo.txt'));
-        $textfile = $textfile.PHP_EOL.$new_string;
-        file_put_contents(realpath($_SERVER['DOCUMENT_ROOT'].'/Data/photo.txt'), $textfile);
-        $bom = my_sort(realpath($_SERVER['DOCUMENT_ROOT'].'/Data/photo.txt'));
-        
+    $directory  = realpath($_SERVER['DOCUMENT_ROOT'].'/schedule');
+    $directories = glob($directory . '/*', GLOB_ONLYDIR);
+    if (in_array($Y, $directories)) {
         return true;
-    } catch (Exception $e) {
+    } else {
+        $new_path = realpath($_SERVER['DOCUMENT_ROOT'].'/schedule').'/'.$Y;
         
-        return false;
+        try {
+            mkdir($new_path);
+            
+            rename($oldpath, $new_path.'/'.$photo );
+            return true;
+        } catch (Exception $e) {
+            return false;
+        }
     }
-
 }
-
-
 ?>

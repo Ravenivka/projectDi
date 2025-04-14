@@ -1,26 +1,13 @@
 <div class="addist__half">
+    <?php
+        $picPath = '../schedule/'.$mid[0].'/'.$mid[4]; 
+    ?>
         <div class="half">
             <form method="post" action="../Data/text.php" id = "form1">
             <input type = 'hidden' name="rule" value="1">;
             <input type='hidden' value="<?php echo $index;?>" name="index">
                 <ol class="addist__ol"><h2 class="edit_h2">Изменить</h2>
-                    <li class="addist__li">
-                        <h3>ГОД</h3><br>
-                        <input type="text" class="addist__input" name="god" value="<?php echo $mid[0] ;?>"/>
-                    </li>
-                    <li class="addist__li">
-                        <h3>Месяц</h3><br>
-                        <select class="addist__phone" name="phone"  >
-                        <?php for ($i = 1; $i < 13; $i++) { ?>
-                            <option value=<?php echo '"'.$i.'"';
-                                if ($i == (int) $mid[1]) {
-                                    echo 'selected';
-                                }
-                        ?>
-                            ><?php echo $i;?></option>
-                        <?php } ?>
-                        </select>                
-                    </li>
+                    
                     <li class="addist__li">
                         <h3>Выбор даты начала</h3><br>
                         <input type="date" class="addist__date" name="start-date" value="<?php echo $sDate->format('Y-m-d') ;?>"/>
@@ -30,17 +17,16 @@
                         <input type="date" class="addist__date" name="end-date" value="<?php echo $eDate->format('Y-m-d') ;?>"/>
                     </li>
                 </ol>
-                <input type="hidden" value="<?php echo $mid[4]; ?>" name="mid4">                
+                <input type="hidden" value="<?php echo $mid[4]; ?>" name="mid4">
+                <input type="hidden" value="<?php echo $picPath; ?>" name="old">    
+                <input type="hidden" class="addist__input" name="god" value="<?php echo $sDate->format('Y') ;?>"/>
+                <input type="hidden" class="addist__input" name="phone" value="<?php echo $sDate->format('m') ;?>"/>
                 <button type="submit" class="month__button" style="margin-left:30px;" >Сохранить</button> 
             </form>
         </div>
         <div class="half">
         <ol class="addist__ol"><h2>Cменить фото</h2>
-            <li class="addist__li"><h3>Текущее фото:</h3></li>
-            <?php 
-                $picPath = '../schedule/'.$mid[0].'/'.$mid[4];                 
-            ?> 
-
+            <li class="addist__li"><h3>Текущее фото:</h3></li> 
             <img src="<?php echo $picPath; ?>" alt="none" class="imgExc"><br>
             <span id="span"><?php echo $mid[4]; ?></span><br>
             <form method = "post" action = "../Data/text.php" enctype="multipart/form-data">

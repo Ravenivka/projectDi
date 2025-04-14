@@ -1,6 +1,7 @@
 <?php
     require_once realpath($_SERVER['DOCUMENT_ROOT'].'/Data/weeks.php' );
-    $a = $_SERVER['HTTP-HOST'] .'/'. $_POST['week'];
+    //$a = $_SERVER['HTTP-HOST'] .'/'. $_POST['week'];
+    $a = 'http://localhost:3000/'.$_POST['week'];
     session_start();
     $title = "Расписание";
     $css = '<link rel="stylesheet" href="'.'' .'../style.css" class="css">';

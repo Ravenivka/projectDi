@@ -1,6 +1,6 @@
 <?php
     $title = "Домашняя";
-    session_start();
+    session_start();    
 
     if(!isset($_SESSION['user'])){
         $_SESSION['user'] = 'None';
@@ -21,6 +21,7 @@
     $currentYearObject = $pack->collection[$currentYear];
     $currentMonth = date('m');
     $currentMonthObject = $currentYearObject->months[(int) $currentMonth]  ;
+    $currentpath = '';
     if ($DayOfWeekNumber == 0){
         $d =(int) date('d') + 1;
         $today = $d.'.'.date('m').'.'.date('Y');
@@ -34,7 +35,10 @@
             $currentpath = $key->path ;
         }
     }   
+    
     require_once './Shared/base_small.php';
+
+    //echo $currentpath;
     echo '<img src="'.$currentpath.'" alt="none" class="main__img"> </main></body></html>';
 
 

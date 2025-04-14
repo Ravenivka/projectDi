@@ -1,8 +1,9 @@
 <div class="addist__half">
         <div class="half">
-            <form method="post" action="text" id = "form1">
+            <form method="post" action="../Data/text.php" id = "form1">
+            <input type = 'hidden' name="rule" value="1">;
             <input type='hidden' value="<?php echo $index;?>" name="index">
-                <ol class="addist__ol"><h2>Изменить</h2>
+                <ol class="addist__ol"><h2 class="edit_h2">Изменить</h2>
                     <li class="addist__li">
                         <h3>ГОД</h3><br>
                         <input type="text" class="addist__input" name="god" value="<?php echo $mid[0] ;?>"/>
@@ -30,28 +31,31 @@
                     </li>
                 </ol>
                 <input type="hidden" value="<?php echo $mid[4]; ?>" name="mid4">                
-                <p style="text-align:center"> <button type="submit" class="month__button" >Сохранить</button> </p>
+                <button type="submit" class="month__button" style="margin-left:30px;" >Сохранить</button> 
             </form>
         </div>
         <div class="half">
-            <h3>Cменить фото</h3>
-            <p>Текущее фото:</p>
+        <ol class="addist__ol"><h2>Cменить фото</h2>
+            <li class="addist__li"><h3>Текущее фото:</h3></li>
             <?php 
-                $picPath = './schedule/'.$mid[0].'/'.$mid[4];                 
+                $picPath = '../schedule/'.$mid[0].'/'.$mid[4];                 
             ?> 
 
             <img src="<?php echo $picPath; ?>" alt="none" class="imgExc"><br>
             <span id="span"><?php echo $mid[4]; ?></span><br>
-            <form method = "post" action = "change_photo" enctype="multipart/form-data">
-                <h3>Смена фото</h3><br>
+            <form method = "post" action = "../Data/text.php" enctype="multipart/form-data">
+            <input type = 'hidden' name="rule" value="2">;
+            <li class="addist__li"><h3>Смена фото</h3></li>
                 <input type="file" class="addist__file" name="file" accept="image/*"  />
-                <input type="hidden" name="small_index" value="<?php echo $index;  ?>">
+                <input type="hidden" name="small_index" value="<?php echo $index;  ?>"></li>
                 <input type="hidden" name="mid0" value="<?php echo $mid[0];  ?>">
                 <input type="hidden" name="mid1" value="<?php echo $mid[1];  ?>">
                 <input type="hidden" name="mid2" value="<?php echo $mid[2];  ?>">
                 <input type="hidden" name="mid3" value="<?php echo $mid[3];  ?>">
                 <input type="hidden" name="mid4" value = "<?php echo $mid[4];?>"/>
-                <p style="text-align:center"> <button type="submit" class="month__button" >Заменить</button> </p>                
+            </ol>
+                <button style="margin-left:30px;" type="submit" class="month__button" >Заменить</button>
+                            
             </form>
 
         </div>            
@@ -59,3 +63,12 @@
         
 
 </div>
+<script>
+        const Di = document.querySelector('.addist__half');
+        const H = window.innerHeight;
+        let Zu = H-120;
+        if (Di.style.height < Zu){
+            let M = Zu + 'px';
+            Di.style.height = M;
+        }
+</script>

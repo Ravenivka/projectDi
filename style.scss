@@ -190,10 +190,14 @@ body{
     height: 950px;
     &__li {
       margin-top: 30px;
+      margin-left: 30px;
     }
     &__half{
       width: 100%;
       display: flex;
+    }
+    &__ol {
+      left : 30px;
     }
   }
   .autorize {
@@ -228,6 +232,9 @@ body{
 
   .imgExc {
     width: 75%;
+  }
+  .edit_h2 {
+    margin-left: 50px;
   }
 
 

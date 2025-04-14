@@ -193,10 +193,14 @@ body {
 }
 .addist__li {
   margin-top: 30px;
+  margin-left: 30px;
 }
 .addist__half {
   width: 100%;
   display: flex;
+}
+.addist__ol {
+  left: 30px;
 }
 
 .autorize {
@@ -234,4 +238,8 @@ body {
 
 .imgExc {
   width: 75%;
+}
+
+.edit_h2 {
+  margin-left: 50px;
 }/*# sourceMappingURL=style.css.map */

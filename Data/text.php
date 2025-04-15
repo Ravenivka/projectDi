@@ -10,28 +10,19 @@ function autorize($text) {
     } 
 }
 
-function exchange(){
+function demiurg(array $array){
     
     if (!isset($_SESSION['role']) or $_SESSION['role'] == 0){        
         require_once realpath ($_SERVER['DOCUMENT_ROOT'].'/shared/base_small.php');        
         echo '<div class="warning"><span>ошибка авторизации 401 Unauthorized Error</span></div>';
         return false;          
-    }
-    $array = array();
-    $array[0] = $_POST['god'];
-    $tem = $_POST['phone'];
-    if (strlen($tem) == 1){
-        $array[1] = '0'.$tem;
-    } else {
-        $array[1] = $tem;
-    }
-    $index = $_POST['index'];    
-    $stamp1 = new DateTime($_POST['start-date']);
-    $stamp2 = new DateTime($_POST['end-date']);
+    }      
+    $stamp1 = new DateTime($array[2]);
+    $stamp2 = new DateTime($array[3]);
     $array[2] = $stamp1->format('d.m.Y');
     $array[3] = $stamp2->format('d.m.Y');
-    $array[4] = $_POST['mid4'];
-    $dir = checkYear($_POST['start-date'], $array[4], oldpath: $_POST['old']);
+    $array[4] = $array[4];
+    $dir = checkYear($array[2], $array[4], $array[4]);
     if (!$dir) {
         return false;
     }
@@ -40,7 +31,7 @@ function exchange(){
 //var_dump($array);
     
     try{
-        $delta = delta($index, realpath($_SERVER['DOCUMENT_ROOT'].'/Data/photo.txt'));
+        //$delta = delta($index, realpath($_SERVER['DOCUMENT_ROOT'].'/Data/photo.txt'));
         $new_string = implode(',', $array);
         $textfile = file_get_contents(realpath($_SERVER['DOCUMENT_ROOT'].'/Data/photo.txt'));
         $textfile = $textfile.PHP_EOL.$new_string;

@@ -112,8 +112,10 @@ function checkYear (string $date, string $photo, string $oldpath) {
         
         try {
             mkdir($new_path);
+            if ($oldpath != $new_path.'/'.$photo) {
+                rename($oldpath, $new_path.'/'.$photo );
+            }
             
-            rename($oldpath, $new_path.'/'.$photo );
             return true;
         } catch (Exception $e) {
             return false;

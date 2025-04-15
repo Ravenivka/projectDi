@@ -99,7 +99,7 @@ function delta(int $index, string $path) {
     return $boo;
 }
 
-function checkYear (string $date, string $photo, string $oldpath) {
+function checkYear (string $date) {
     $sDate = new DateTime($date);
     $Y = $sDate->format('Y');
     
@@ -111,15 +111,20 @@ function checkYear (string $date, string $photo, string $oldpath) {
         $new_path = realpath($_SERVER['DOCUMENT_ROOT'].'/schedule').'/'.$Y;
         
         try {
-            mkdir($new_path);
-            if ($oldpath != $new_path.'/'.$photo) {
-                rename($oldpath, $new_path.'/'.$photo );
-            }
-            
+            if (!file_exists($new_path)) {
+                mkdir($new_path);
+            }            
+           
             return true;
         } catch (Exception $e) {
             return false;
         }
     }
 }
+
+function exchange (string $newpath, string $oldpath) {
+
+}
+
+
 ?>

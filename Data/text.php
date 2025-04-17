@@ -149,14 +149,21 @@ switch($rule) {
         $path ='../'. $_POST['path'];
         $start = $_POST['start'];
         $path_array = explode('/', $path);
-        $path_end = $path_array[count($path_array)-1];        
-        $array = findLine($start, $path_end, realpath($_SERVER['DOCUMENT_ROOT'].'/Data/photo.txt' ));
+        $path_end = $path_array[count($path_array)-1];     
+        $photo = realpath($_SERVER['DOCUMENT_ROOT'].'/Data/photo.txt' );   
+        $array = findLine($start, $path_end, $photo);
         $index = $array[0];
-        try {
+        if (file_exists($path)) {
             unlink($path);
-        } catch (Exception $e) {
-            echo '<script>console.log('.$e->getMessage().')</script>' ;
         }
+        $boo = delta($index, $photo);
+        if (!$boo) {
+            require_once $_SERVER['DOCUMENT_ROOT']. '/Shared/base_small.php';
+            echo '<div class="warning"><span>Ошибка записи</span></div></main></body></html>';
+            break;
+        }
+        require_once $_SERVER['DOCUMENT_ROOT']. '/Shared/base_small.php';
+        echo '<div class="warning"><span>Операция выполнена</span></div></main></body></html>';  
     
         break;
     default:

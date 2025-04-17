@@ -93,7 +93,57 @@ switch($rule) {
            
         break;
     case 2:
-        echo 'photo';
+        $file = $_FILES['file']['name'];
+        $ext = getExtension1($file);
+        $array = array();        
+        $array[0] =$_POST['mid0'];
+        $array[1] =$_POST['mid1'];
+        $array[2] =$_POST['mid2'];
+        $array[3] =$_POST['mid3'];
+        $array[4] = $_POST['mid4'];
+        //var_dump($array);
+        $new_name = $array[2].'.'.$ext;
+        //echo $new_name;
+        $uploads_dir = realpath($_SERVER['DOCUMENT_ROOT'].'/schedule/'.$array[0] );
+        $boo = move_uploaded_file($file = $_FILES['file']['tmp_name'], "$uploads_dir/$new_name");
+        if (!$boo) {
+            require_once $_SERVER['DOCUMENT_ROOT']. '/Shared/base_small.php';
+            echo '<div class="warning"><span>Ошибка записи</span></div></main></body></html>';
+            break; 
+        }
+        if ($array[4] == $new_name) {
+            require_once $_SERVER['DOCUMENT_ROOT']. '/Shared/base_small.php';
+            echo '<div class="warning"><span>Записано</span></div></main></body></html>';
+            break;
+        }
+        $array[4] = $new_name;
+        $demo = demiurg($array);        
+        if (!$demo) {            
+            require_once $_SERVER['DOCUMENT_ROOT']. '/Shared/base_small.php';
+            echo '<div class="warning"><span>Ошибка записи</span></div></main></body></html>';
+            break;
+        }
+        $index =$_POST['small_index'];
+        
+        $delta = delta($index, realpath($_SERVER['DOCUMENT_ROOT'].'/Data/photo.txt'));
+        
+        if (!$delta) {
+            require_once $_SERVER['DOCUMENT_ROOT']. '/Shared/base_small.php';
+            echo '<div class="warning"><span>Ошибка записи</span></div></main></body></html>';
+            break;
+        }
+        $my_sort = my_sort(realpath($_SERVER['DOCUMENT_ROOT']. '/Data/photo.txt'));
+        //echo $my_sort;
+
+        if (!$my_sort) {
+            require_once $_SERVER['DOCUMENT_ROOT']. '/Shared/base_small.php';
+            echo '<div class="warning"><span>Ошибка записи</span></div></main></body></html>';
+            break;
+        }
+        require_once $_SERVER['DOCUMENT_ROOT']. '/Shared/base_small.php';
+        echo '<div class="warning"><span>Записано</span></div></main></body></html>';
+            
+        
         break;
     default:
         require_once $_SERVER['DOCUMENT_ROOT']. '/Shared/base_small.php';

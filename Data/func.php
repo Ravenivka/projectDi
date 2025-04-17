@@ -121,10 +121,4 @@ function checkYear (string $date) {
         }
     }
 }
-
-function exchange (string $newpath, string $oldpath) {
-
-}
-
-
 ?>

@@ -178,7 +178,7 @@ switch($rule) {
         if (!file_exists($uploads_dir)) {
             mkdir($uploads_dir);
         }
-        $boo = move_uploaded_file($file = $_FILES['file']['tmp_name'], "$uploads_dir/$new_name");
+        $boo = move_uploaded_file($_FILES['file']['tmp_name'], "$uploads_dir/$new_name");
         if (!$boo) {
             require_once $_SERVER['DOCUMENT_ROOT']. '/Shared/base_small.php';
             echo '<div class="warning"><span>Ошибка записи</span></div></main></body></html>';

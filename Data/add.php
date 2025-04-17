@@ -6,9 +6,10 @@ if ( !isset($_SESSION['role']) or ($_SESSION['role'] == 0) ) {
     echo '<div class="warning"><span>ошибка авторизации 401 Unauthorized Error</span></div>';
 
 }
-require_once realpath($_SERVER['DOCUMENT_ROOT'].'/Shared/base_small.php');
 $Date = new DateTime();
 $eDate = new DateTime('+5 days');
+require_once realpath($_SERVER['DOCUMENT_ROOT'].'/Shared/base_small.php');
+
 ?>
 <div class="addist__half">
     

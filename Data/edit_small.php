@@ -29,7 +29,7 @@
             <li class="addist__li"><h3>Текущее фото:</h3></li> 
             <img src="<?php echo $picPath; ?>" alt="none" class="imgExc"><br>
             <span id="span"><?php echo $mid[4]; ?></span><br>
-            <form method = "post" action = "../Data/text.php" enctype="multipart/form-data">
+            <form method = "post" action = "../Data/text.php" enctype="multipart/form-data"> 
             <input type = 'hidden' name="rule" value="2">;
             <li class="addist__li"><h3>Смена фото</h3></li>
                 <input type="file" class="addist__file" name="file" accept="image/*"  />

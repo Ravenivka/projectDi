@@ -1,7 +1,7 @@
 <?php
 session_start();
 $rule = $_REQUEST['rule'];
-
+$title = "РеДАКТОР";
 require_once realpath($_SERVER['DOCUMENT_ROOT'].'/Data/func.php');
 function autorize($text) {
     if ((int) $text == 0) {
@@ -141,9 +141,23 @@ switch($rule) {
             break;
         }
         require_once $_SERVER['DOCUMENT_ROOT']. '/Shared/base_small.php';
-        echo '<div class="warning"><span>Записано</span></div></main></body></html>';
-            
+        echo '<div class="warning"><span>Записано</span></div></main></body></html>';  
         
+        break;
+
+    case 3:
+        $path ='../'. $_POST['path'];
+        $start = $_POST['start'];
+        $path_array = explode('/', $path);
+        $path_end = $path_array[count($path_array)-1];        
+        $array = findLine($start, $path_end, realpath($_SERVER['DOCUMENT_ROOT'].'/Data/photo.txt' ));
+        $index = $array[0];
+        try {
+            unlink($path);
+        } catch (Exception $e) {
+            echo '<script>console.log('.$e->getMessage().')</script>' ;
+        }
+    
         break;
     default:
         require_once $_SERVER['DOCUMENT_ROOT']. '/Shared/base_small.php';

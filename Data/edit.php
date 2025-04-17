@@ -1,5 +1,6 @@
 <?php 
     session_start();
+    $title = "Редактор";
     if ($_SESSION['role'] == 0) {
         //echo $_SESSION['role'];
         header('Location: ../index.php');

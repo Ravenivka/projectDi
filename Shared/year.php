@@ -78,8 +78,9 @@
                 <form method="post">
                     <input value = "<?php echo $week->path; ?>" name = "path" type ="hidden"/>
                     <input value = "<?php echo $week->start; ?>" name = "start" type ="hidden"/>
+                    <input type = 'hidden' name="rule" value="3">;
                     <button class="month__btn month__btn-short " type="submit" formaction="../Data/edit.php" >&#128221;</button>
-                    <button class="month__btn month__btn-short" type="submit" formaction="../Data/delta.php" >&#128683;</button>
+                    <button class="month__btn month__btn-short" type="submit" formaction="../Data/text.php" >&#128683;</button>
                 </form>    
                 <?php } ?>
             </li>

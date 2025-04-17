@@ -166,6 +166,10 @@ switch($rule) {
         echo '<div class="warning"><span>Операция выполнена</span></div></main></body></html>';  
     
         break;
+    case 4:
+
+
+        break;
     default:
         require_once $_SERVER['DOCUMENT_ROOT']. '/Shared/base_small.php';
         echo '<div class="warning"><span>Ошибка 500 (Файл не найден)</span></div></main></body></html>';

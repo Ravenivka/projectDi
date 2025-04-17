@@ -49,7 +49,8 @@
                 if (isset($_SESSION['user']) and ($_SESSION['role'] > 0)){
             ?>            
             <div class="nav__menu">
-                <form method="post" action="../Shared/add.php">
+                <form method="post" action="../Data/add.php">
+                    
                     <button type="submit" class="month__button month__button_nomargin" ><p style="text-align:center;">Добавить фото</p> </button>
                 </form>
             </div> <?php } ?>

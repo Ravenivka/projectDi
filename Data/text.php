@@ -167,7 +167,40 @@ switch($rule) {
     
         break;
     case 4:
+        $sDate = new DateTime($_POST["start-date"]);
+        $eDate = new DateTime($_POST["end-date"]);
 
+        $file = $_FILES['file']['name'];
+        $ext = getExtension1($file);
+        $new_name = $sDate -> format('d.m.Y') . '.' . $ext;
+        //echo $new_name;
+        $uploads_dir = realpath($_SERVER['DOCUMENT_ROOT'].'/schedule/'.$sDate->format('Y') );
+        if (!file_exists($uploads_dir)) {
+            mkdir($uploads_dir);
+        }
+        $boo = move_uploaded_file($file = $_FILES['file']['tmp_name'], "$uploads_dir/$new_name");
+        if (!$boo) {
+            require_once $_SERVER['DOCUMENT_ROOT']. '/Shared/base_small.php';
+            echo '<div class="warning"><span>Ошибка записи</span></div></main></body></html>';
+            break;
+        }
+        $array = array();
+        $array[0] = $sDate -> format('Y');
+        $array[1] = $sDate -> format('m');
+        $array[2] = $sDate -> format('d.m.Y');
+        $array[3] = $eDate -> format('d.m.Y');
+        $array[4] = $new_name;
+        $text = implode(',', $array);
+        $photo_text = file_get_contents(realpath($_SERVER['DOCUMENT_ROOT']).'/Data/photo.txt');
+        $photo_text = $photo_text.PHP_EOL.$text;
+        $boo = file_put_contents(realpath($_SERVER['DOCUMENT_ROOT']).'/Data/photo.txt', $photo_text);
+        if ($boo == false) {
+            require_once $_SERVER['DOCUMENT_ROOT']. '/Shared/base_small.php';
+            echo '<div class="warning"><span>Ошибка записи</span></div></main></body></html>';
+            break; 
+        }
+        require_once $_SERVER['DOCUMENT_ROOT']. '/Shared/base_small.php';
+        echo '<div class="warning"><span>Операция выполнена</span></div></main></body></html>';  
 
         break;
     default:

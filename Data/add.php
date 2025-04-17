@@ -4,17 +4,17 @@ session_start();
 if ( !isset($_SESSION['role']) or ($_SESSION['role'] == 0) ) {
     require_once realpath ($_SERVER['DOCUMENT_ROOT'].'/shared/base_small.php');        
     echo '<div class="warning"><span>ошибка авторизации 401 Unauthorized Error</span></div>';
-
 }
-$Date = new DateTime();
+
+$sDate = new DateTime();
 $eDate = new DateTime('+5 days');
 require_once realpath($_SERVER['DOCUMENT_ROOT'].'/Shared/base_small.php');
-
+//echo $eDate->format('d.m.Y');
 ?>
-<div class="addist__half">
-    
-        <div class="half__center">
-            <form method="post" action="../Data/text.php" id = "form1" enctype="multipart/form-data">
+
+<div class="addist__half">    
+    <div class="half__center">
+        <form method="post" action="../Data/text.php" class = "form1" enctype="multipart/form-data">
                 <input type = 'hidden' name="rule" value="4">
             
                 <ol class="addist__ol"><h2 class="edit_h2">Новое расписание</h2>
@@ -34,8 +34,8 @@ require_once realpath($_SERVER['DOCUMENT_ROOT'].'/Shared/base_small.php');
                 </ol>
                 
                 <button type="submit" class="month__button" style="margin-left:30px;" >Сохранить</button> 
-            </form>
-        </div>
+        </form>
+    </div>
            
    
 </div>        
@@ -50,3 +50,4 @@ require_once realpath($_SERVER['DOCUMENT_ROOT'].'/Shared/base_small.php');
             Di.style.height = M;
         }
 </script>
+-->

@@ -179,6 +179,14 @@ switch($rule) {
             mkdir($uploads_dir);
         }
         $boo = move_uploaded_file($_FILES['file']['tmp_name'], "$uploads_dir/$new_name");
+echo '\n'.$boo.'\n';
+echo $_FILES["file"]["error"].'\n';
+echo 'post_max_size = ' . ini_get('post_max_size') . "\n";
+echo 'upload_max_filesize = ' . ini_get('upload_max_filesize') . "\n";
+echo 'max_execution_time = ' . ini_get('max_execution_time') . "\n";
+
+
+break;
         if (!$boo) {
             require_once $_SERVER['DOCUMENT_ROOT']. '/Shared/base_small.php';
             echo '<div class="warning"><span>Ошибка записи</span></div></main></body></html>';

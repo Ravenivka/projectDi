@@ -167,12 +167,7 @@ switch($rule) {
     
         break;
     case 4:
-        ini_set('upload_tmp_dir', 'Data/tama');
-        $upload_tmp_dir = ini_get('upload_tmp_dir') ? ini_get('upload_tmp_dir') : sys_get_temp_dir();
-        $realpath_cache_size = ini_get('realpath_cache_size');
-        $post_max_size = ini_get('post_max_size');
-        $file_uploads = ini_get('file_uploads');
-        $upload_max_filesize = ini_get('upload_max_filesize');
+        
 
         $sDate = new DateTime($_POST["start-date"]);
         $eDate = new DateTime($_POST["end-date"]);
@@ -186,16 +181,8 @@ switch($rule) {
             mkdir($uploads_dir);
         }
         
-        //$boo = move_uploaded_file($_FILES['file']['tmp_name'], "$uploads_dir/$new_name");
-        //$tamapath = realpath($_SERVER['DOCUMENT_ROOT'].'/Data/tama'.$_FILES['file']['tmp_name']);
-        //$foo = alternate($_FILES['file']['tmp_name'], "$uploads_dir/$new_name");
-        echo 'upload_tmp_dir: - '.$upload_tmp_dir.'<br>';
-        echo 'realpath_cache_size: - '.$realpath_cache_size.'<br>';
-        echo 'post_max_size: - '.$post_max_size.'<br>';
-        echo 'file_uploads: - '.$file_uploads.'<br>';
-        echo 'upload_max_filesize: - '.$upload_max_filesize.'<br>';
-
-break;
+        $boo = move_uploaded_file($_FILES['file']['tmp_name'], $uploads_dir."/".$new_name);
+       
         if (!$boo) {
             require_once $_SERVER['DOCUMENT_ROOT']. '/Shared/base_small.php';
             echo '<div class="warning"><span>Ошибка записи</span></div></main></body></html>';

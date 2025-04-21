@@ -7,7 +7,7 @@
     $css = '<link rel="stylesheet" href="'.'' .'../style.css" class="css">';
     require_once realpath($_SERVER['DOCUMENT_ROOT'].'/Shared/base_small.php' );
     //echo $a;
-    echo '<img src="'.$a.'" alt="none" class="main__img"></main></body></html>'           ;
+    echo '<img src="'.$a.'?='.filemtime($a).'" alt="none" class="main__img"></main></body></html>'           ;
 
 
 ?>

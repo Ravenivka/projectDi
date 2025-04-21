@@ -121,4 +121,12 @@ function checkYear (string $date) {
         }
     }
 }
+function alternate($path1, $path2) {
+    $text = file_get_contents($path1);
+    if ($text == false) {
+        return false;
+    }
+    return file_put_contents($path2,$text);
+}
+
 ?>

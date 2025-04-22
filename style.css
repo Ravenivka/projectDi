@@ -254,4 +254,45 @@ body {
 
 .edit_h2 {
   margin-left: 50px;
+}
+
+@media (max-width: 600px) {
+  .basic {
+    width: 360px;
+    margin-left: calc(50% - 180px);
+    margin-right: calc(50% - 180px);
+  }
+  .header {
+    height: 45px;
+  }
+  .header_h {
+    width: 85%;
+  }
+  .header_title {
+    font-size: 10px;
+  }
+  .header_subtitle {
+    font-size: 12px;
+  }
+  .header_editor {
+    width: 120px;
+    align-items: center;
+    display: flex;
+  }
+  .nav {
+    height: 40px;
+  }
+  .nav__menu {
+    width: 50px;
+    font-size: 12px;
+  }
+  .nav__btn {
+    font-size: 12px;
+  }
+  .month__button {
+    font-size: 5px;
+    width: 40px;
+    margin-left: 20px;
+    margin-top: -10px;
+  }
 }/*# sourceMappingURL=style.css.map */

@@ -30,7 +30,7 @@
                     <?php } else { ?>
                         <form method="post" action="../Data/autor.php">
                          <input type = 'hidden' name = "var" value = "2">   
-                        <button type="submit" class="month__button" >Вход</button>
+                        <button type="submit" class="megaknop" >Вход</button>
                         </form>
                     <?php } ?>
                 </div> 
@@ -48,11 +48,11 @@
                 } 
                 if (isset($_SESSION['user']) and ($_SESSION['role'] > 0)){
             ?>            
-            <div class="nav__menu">
+            
                 <form method="post" action="../Data/add.php">
                     
-                    <button type="submit" class="month__button month__button_nomargin" ><p style="text-align:center;">Добавить фото</p> </button>
+                    <button type="submit" class="month__button_nomargin" ><p style="text-align:center;">Добавить фото</p> </button>
                 </form>
-            </div> <?php } ?>
+             <?php } ?>
         </nav>     
         <main class="main">

@@ -33,7 +33,7 @@ require_once realpath($_SERVER['DOCUMENT_ROOT'].'/Shared/base_small.php');
                     </li>
                 </ol>
                 
-                <button type="submit" class="month__button" style="margin-left:30px;" >Сохранить</button> 
+                <button type="submit" class="month__button">OK</button> 
         </form>
     </div>
            

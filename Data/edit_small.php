@@ -21,7 +21,7 @@
                 <input type="hidden" value="<?php echo $picPath; ?>" name="old">    
                 <input type="hidden" class="addist__input" name="god" value="<?php echo $sDate->format('Y') ;?>"/>
                 <input type="hidden" class="addist__input" name="phone" value="<?php echo $sDate->format('m') ;?>"/>
-                <button type="submit" class="month__button" style="margin-left:30px;" >Сохранить</button> 
+                <button type="submit" class="month__button"  >OK</button> 
             </form>
         </div>
         <div class="half">
@@ -40,7 +40,7 @@
                 <input type="hidden" name="mid3" value="<?php echo $mid[3];  ?>">
                 <input type="hidden" name="mid4" value = "<?php echo $mid[4];?>"/>
             </ol>
-                <button style="margin-left:30px;" type="submit" class="month__button" >Заменить</button>
+                <button  type="submit" class="month__button" >OK</button>
                             
             </form>
 

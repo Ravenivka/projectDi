@@ -25,7 +25,7 @@ body {
   display: flex;
 }
 .header_user {
-  margin-top: 10px;
+  margin-top: -10px;
   text-align: center;
   font-size: 25px;
 }
@@ -46,9 +46,28 @@ body {
 }
 
 .header_editor {
+  padding-top: 10px;
   width: 300px;
   color: yellowgreen;
   font-size: 12px;
+}
+
+.megaknop {
+  font-size: 20px;
+  width: 200px;
+  height: 40px;
+  border: 2px solid white;
+  border-radius: 20px;
+  background-color: blueviolet;
+  color: white;
+}
+.megaknop_nomargin {
+  margin-top: 0;
+}
+
+.megaknop:hover {
+  background-color: navy;
+  color: pink;
 }
 
 .nav {
@@ -148,6 +167,7 @@ body {
 .month__button {
   font-size: 20px;
   margin-top: 20px;
+  margin-left: 20px;
   width: 200px;
   height: 40px;
   border: 2px solid white;
@@ -156,7 +176,17 @@ body {
   color: white;
 }
 .month__button_nomargin {
-  margin-top: 0;
+  font-size: 20px;
+  width: 200px;
+  height: 40px;
+  border: 2px solid white;
+  border-radius: 20px;
+  background-color: blueviolet;
+  color: white;
+}
+.month__button_nomargin:hover {
+  background-color: navy;
+  color: pink;
 }
 .month__button:hover {
   background-color: navy;
@@ -311,6 +341,12 @@ body {
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(6, 1fr);
   }
+  .month__button_nomargin {
+    font-size: 15px;
+    width: 120px;
+    height: 40px;
+    margin-left: 10px;
+  }
 }
 @media (max-width: 599px) {
   .basic {
@@ -326,9 +362,6 @@ body {
   }
   .header_subtitle {
     font-size: 12px;
-  }
-  .header_editor {
-    width: 120px;
   }
   .header_user {
     margin-top: 0;
@@ -351,8 +384,8 @@ body {
   .month__button {
     font-size: 10px;
     width: 40px;
-    margin-left: 20px;
-    margin-top: 0;
+    margin-left: 42%;
+    margin-top: 20px;
   }
   .main_double {
     grid-template-columns: repeat(1, 1fr);
@@ -363,5 +396,32 @@ body {
     font-style: 5px;
     margin-top: -10px;
     display: block;
+  }
+  .month__button_nomargin {
+    font-size: 10px;
+    width: 90px;
+    height: 30px;
+    margin-left: 10px;
+  }
+  .megaknop {
+    font-size: 10px;
+    width: 50px;
+    height: 40px;
+    border-radius: 20px;
+  }
+  .header_editor {
+    width: 90px;
+    padding-top: 0;
+  }
+  .half__center {
+    justify-content: start;
+    margin-left: 0;
+  }
+  .addist__li {
+    font-size: 12px;
+  }
+  .addist__half {
+    flex-direction: column;
+    align-items: center;
   }
 }/*# sourceMappingURL=style.css.map */

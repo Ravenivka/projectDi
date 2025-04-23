@@ -22,7 +22,7 @@ body{
     height: 70px;
     display: flex;
     &_user {
-      margin-top: 10px;
+      margin-top: -10px;
       text-align: center;
       font-size: 25px;
     }
@@ -40,10 +40,29 @@ body{
     width: 1500px;
   }
   .header_editor {
+    padding-top: 10px;
     width: 300px;    
     color: yellowgreen;
     font-size: 12px;
   }
+
+  .megaknop {
+    font-size: 20px;    
+    width: 200px;
+    height: 40px;
+    border: 2px solid white;
+    border-radius: 20px;
+    background-color: blueviolet;
+    color: white;
+    &_nomargin{
+      margin-top: 0;
+    }
+  }
+  .megaknop:hover {
+    background-color: navy;
+    color: pink;
+  }
+
   .nav {
     width: 100%;
     position: relative;
@@ -145,6 +164,7 @@ body{
     &__button {
       font-size: 20px;
       margin-top: 20px;
+      margin-left: 20px;
       width: 200px;
       height: 40px;
       border: 2px solid white;
@@ -152,7 +172,17 @@ body{
       background-color: blueviolet;
       color: white;
       &_nomargin{
-        margin-top: 0;
+        font-size: 20px;       
+        width: 200px;
+        height: 40px;
+        border: 2px solid white;
+        border-radius: 20px;
+        background-color: blueviolet;
+        color: white;        
+      }
+      &_nomargin:hover  {
+        background-color: navy;
+        color: pink;
       }
     }
     &__button:hover {
@@ -314,6 +344,12 @@ body{
         grid-template-rows: repeat(6,1fr);
       }
     }
+    .month__button_nomargin {
+      font-size: 15px;       
+      width: 120px;
+      height: 40px;
+      margin-left: 10px;      
+    }
   }
 
   @media(max-width: 599px){
@@ -330,11 +366,8 @@ body{
         font-size: 10px;
       }
       &_subtitle {
-        font-size: 12px;
-      }
-      &_editor { 
-        width: 120px;         
-      }
+        font-size: 12px;              
+    }
       &_user {
         margin-top: 0;
         text-align: center;
@@ -350,16 +383,16 @@ body{
       &__btn {       
         font-size: 12px;
       }
-    }
+    }                                       
     .month {
       width: 320px;
-    }
+    } 
 
     .month__button {
       font-size: 10px;
       width: 40px;
-      margin-left: 20px;
-      margin-top: 0;
+      margin-left: 42%;
+      margin-top: 20px;
     }
     .main {      
       &_double {        
@@ -373,7 +406,34 @@ body{
       margin-top: -10px;
       display: block;
     }
+    .month__button_nomargin {
+      font-size: 10px;       
+      width: 90px;
+      height: 30px;
+      margin-left: 10px;      
+    }
+    .megaknop {
+      font-size: 10px;    
+      width: 50px;
+      height: 40px;      
+      border-radius: 20px;      
+    }
+    .header_editor {
+      width: 90px;
+      padding-top: 0;
 
+    }
+    .half__center {      
+      justify-content: start;
+      margin-left: 0;      
+    }
+    .addist__li {
+      font-size: 12px;
+    }
+    .addist__half {
+      flex-direction: column;
+      align-items: center;      
+  }
   }
 
 

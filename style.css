@@ -99,12 +99,12 @@ body {
   width: 100%;
 }
 .main_double {
+  height: 880px;
   width: 100%;
   display: flex;
   flex-wrap: wrap;
   position: relative;
   background-color: #15255f;
-  height: 100%;
 }
 
 .month {
@@ -113,6 +113,7 @@ body {
   position: relative;
   border: 2px solid white;
   box-sizing: border-box;
+  height: 420px;
 }
 .month__h3 {
   text-align: center;
@@ -256,17 +257,47 @@ body {
   margin-left: 50px;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 1599px) {
   .basic {
-    width: 360px;
-    margin-left: calc(50% - 180px);
-    margin-right: calc(50% - 180px);
-  }
-  .header {
-    height: 45px;
+    width: 1024px;
+    margin-left: calc(50% - 612px);
+    margin-right: calc(50% - 612px);
   }
   .header_h {
     width: 85%;
+  }
+  .main_double {
+    justify-content: center;
+  }
+}
+@media (max-width: 1023px) {
+  .basic {
+    width: 600px;
+    margin-left: calc(50% - 300px);
+    margin-right: calc(50% - 300px);
+  }
+  .header_title {
+    font-size: 14px;
+  }
+  .header_subtitle {
+    font-size: 14px;
+  }
+  .nav__menu {
+    width: 50px;
+    font-size: 16px;
+  }
+  .nav__btn {
+    font-size: 16px;
+  }
+}
+@media (max-width: 599px) {
+  .basic {
+    width: 320px;
+    margin-left: calc(50% - 160px);
+    margin-right: calc(50% - 160px);
+  }
+  .header {
+    height: 45px;
   }
   .header_title {
     font-size: 10px;
@@ -290,7 +321,7 @@ body {
     font-size: 12px;
   }
   .month__button {
-    font-size: 5px;
+    font-size: 10px;
     width: 40px;
     margin-left: 20px;
     margin-top: -10px;

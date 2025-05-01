@@ -7,39 +7,46 @@
         $_SESSION['role'] = 0;
     }
     //echo $_SESSION['user'];    
+    
     require_once './Data/weeks.php';
 
-    if (!isset($_SESSION['server'] )){
+    if (!isset($_SESSION['server'])){
         $_SESSION['server'] = $_SERVER['REQUEST_URI'];
     }
     //echo $_SESSION['server'];
+
     global $pack;
     date_default_timezone_set('Asia/Yekaterinburg');
-    $DayOfWeekNumber = date("w");
+    
+    $DayOfWeekNumber = date("w"); // 0 - воскресенье, 1-6 - понедельник-суббота
     $today = date('d.m.Y');
     $currentYear = date('Y');
-    $currentYearObject = $pack->collection[$currentYear];
-    $currentMonth = date('m');
-    $currentMonthObject = $currentYearObject->months[(int) $currentMonth]  ;
-    $currentpath = '';
+   
     if ($DayOfWeekNumber == 0){
-        $d =(int) date('d') + 1;
-        $today = $d.'.'.date('m').'.'.date('Y');
+        $nextDay = new DateTime('tomorrow');
+        $today = $nextDay->format('d.m.Y');
     }
-    $array = $currentMonthObject->weeks ;
-    foreach ($array as $key ) {
-        $date1 = DateTime::createFromFormat('d.m.Y', $key->start);
-        $date2 = DateTime::createFromFormat('d.m.Y', $key->finish);
-        $date3 = DateTime::createFromFormat('d.m.Y', $today);
-        if (($date1 <= $date3) and ($date2 >= $date3)){
-            $currentpath = $key->path ;
+
+    $currentpath = '';
+    $currentYearObject = $pack->collection[$currentYear];
+    
+    foreach ($currentYearObject->months as $monthNumber => $month) {
+        foreach ($month->weeks as $week) {
+            $dateStart = DateTime::createFromFormat('d.m.Y', $week->start);
+            $dateEnd = DateTime::createFromFormat('d.m.Y', $week->finish);
+            $dateCurrent = DateTime::createFromFormat('d.m.Y', $today);
+            
+            if ($dateCurrent >= $dateStart && $dateCurrent <= $dateEnd) {
+                $currentpath = $week->path;
+                break 2;
+            }
         }
-    }   
+    }
     
     require_once './Shared/base_small.php';
+     //echo $currentpath;
+    echo '<a href="'.$currentpath.'" target="_blank"><img src="'.$currentpath.'" alt="none" class="main__img"></a></main></body></html>';
 
-    //echo $currentpath;
-    echo '<img src="'.$currentpath.'" alt="none" class="main__img"> </main></body></html>';
 
 
 

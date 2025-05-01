@@ -1,10 +1,7 @@
 <?php
 
-function render(string $base , string $value, string $atEnd){
-    require_once $base;   
-    echo $value;
-    require_once $atEnd;
-
+function render(string $currentpath){
+    return '<a href="'.$currentpath.'" target="_blank"><img src="'.$currentpath.'" alt="none" class="main__img"></a>';
 }
 function view(string $base , string $value, string $atEnd){
     require_once $base;
@@ -121,12 +118,20 @@ function checkYear (string $date) {
         }
     }
 }
-function alternate($path1, $path2) {
-    $text = file_get_contents($path1);
-    if ($text == false) {
-        return false;
+function alternate(int $data) {
+    $fulltext = file_get_contents(realpath($_SERVER['DOCUMENT_ROOT'] .'/Data/photo.txt'));
+    $fulltextarray = explode(PHP_EOL, $fulltext);
+    foreach ($fulltextarray as $line) {        
+        $linearray = explode(',', $line) ;        
+        $dateEnd = DateTime::createFromFormat('d.m.Y', $linearray[3])->getTimestamp();                
+        if (!($dateEnd < $data)) {
+            $fullpath = '../schedule/'. $linearray[0].'/'. $linearray[4];            
+            return $fullpath;
+        }        
     }
-    return file_put_contents($path2,$text);
+    return null;
 }
+
+
 
 ?>
